@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g, request, redirect, url_for, session
+from flask import Flask, render_template, g, request, redirect, url_for, session, flash
 import sqlite3
 from functools import wraps
 
@@ -13,6 +13,7 @@ def login_required(f):
         if 'login_in' in session:
             return f(*args, **kwargs)
         else:
+            flash('please login first.')
             return redirect(url_for('login'))
 
     return wrap
@@ -35,17 +36,19 @@ def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Login'
+            error = 'Invalid credentials. Please try again'
         else:
             session['logged_in'] = True
+            flash('Welcome back')
             return redirect(url_for('welcome'))
-    return render_template("login.html", error=error)
+    return render_template("login.html", error=error, isin=True)
 
 
 @app.route('/logout')
 @login_required
 def logout():
     session.pop('logged_in', None)
+    flash('See you later')
     return redirect(url_for('login'))
 
 
@@ -75,6 +78,34 @@ def account(type):
         balance = 100
         interest = 0.2
         transactions = [["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
+                        ["Nov 26 2016", "deposit", 10, 110],
                         ["Jan 30 2017", "Withdraw", 10, 100]]
     return render_template("account.html", type=type, accountNum=accountNum, balance=balance,
                            interest=interest,

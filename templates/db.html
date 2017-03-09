@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "baseIn.html" %}
 {% block content %}
-
+<div class="container">
 {% for post in posts %}
 <strong>Title:</strong>{{ post.title }}<br>
 <strong>Post:</strong>{{ post.description }}<br>
 {% endfor %}
-
+</div>
 {% endblock %}

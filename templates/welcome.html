@@ -1,17 +1,14 @@
-{% extends "base.html" %}
+{% extends "baseIn.html" %}
 {% block content %}
 
-<h2>View your profile</h2>
-<p>Click <a href="/profile">here</a> to view</p>
+<div class="container">
 
-<h2>Accounts</h2>
+  <h2>My Accounts</h2>
 
-<ul>
-  {% for item in accountType %}
-  <li>view <a href="/account/{{ item }}"><strong>{{ item }}</strong></a> account</li>
-  {% endfor %}
-</ul>
-
-
-<a href="/logout">LOGOUT</a>
+  <table>
+    {% for item in accountType %}
+    <tr><td>view <a href="/account/{{ item }}"><strong>{{ item }}</strong></a> account</td></tr>
+    {% endfor %}
+  </table>
+</div>
 {% endblock %}

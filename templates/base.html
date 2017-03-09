@@ -14,24 +14,30 @@
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <!-- customersize css -->
+  <link rel="stylesheet" href="static/style.css">
   <title>FLASK BANK</title>
 
 </head>
 <body>
-  <div class="container">
 
     <!-- child template -->
     {% block content %}{% endblock %}
 
     <!-- error message -->
     {% if error %}
-    <p class="error"><strong>Error:</strong>{{ error }}</p>
+    <p class="error" align="center"><strong>Error: </strong>{{ error }}</p>
     {% endif %}
 
     <!-- flash message -->
     {% for message in get_flashed_messages() %}
-    {{ message }}
+    <p align="center">{{ message }}</p>
     {% endfor %}
-  </div>
+
+
+  <!-- toTop -->
+<div class="elevator-wrapper"></div>
+
 </body>
 </html>
