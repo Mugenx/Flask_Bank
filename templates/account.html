@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ type }} Account Detail</h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Account Number</td>
+      <td>{{ accountNum }}</td>
+    </tr>
+    <tr>
+      <td>Current Balance</td>
+      <td>{{ balance }}</td>
+    </tr>
+    <tr>
+      <td>interest</td>
+      <td>{{ interest }}</td>
+    </tr>
+  </tbody>
+
+
+  <table class="table">
+    <lable>Transactions</lable>
+    <tbody>
+      <th>Date</th>
+      <th>Action</th>
+      <th>Amount</th>
+      <th>Balance</th>
+      {% for item in transactions %}
+      <tr>
+        {% for item in item %}
+        <td>{{ item }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="/welcome">BACK</a>
+
+{% endblock %}
