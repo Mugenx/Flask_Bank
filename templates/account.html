@@ -12,29 +12,34 @@
     </tr>
     <tr>
       <td style="border:0">Current Balance</td>
-      <td style="border:0">{{ balance }}</td>
+      {% for item in balance %}
+      <td style="border:0">${{ item.balance }}</td>
+      {% endfor %}
     </tr>
     <tr>
       <td style="border:0">interest</td>
-      <td style="border:0">{{ interest }}</td>
+      <td style="border:0">{{ interest }}%</td>
     </tr>
   </tbody>
 
 
   <table class="table table-responsive table-striped table-hover">
     <tbody>
-      <caption>Transactions</caption>
+      <caption>Transactions History</caption>
       <thead>
         <th>Date</th>
+        <th>Transaction Description</th>
         <th>Action</th>
         <th>Amount</th>
         <th>Balance</th>
       </thead>
       {% for item in transactions %}
       <tr>
-        {% for item in item %}
-        <td>{{ item }}</td>
-        {% endfor %}
+        <td>{{ item.Date }}</td>
+        <td>{{ item.TransactionDescription }}</td>
+        <td>{{ item.Action }}</td>
+        <td>${{ item.Amount }}</td>
+        <td>${{ item.Balance }}</td>
       </tr>
       {% endfor %}
     </tbody>

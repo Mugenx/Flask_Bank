@@ -2,6 +2,15 @@ body {
   color: #34495e;
 }
 
+a{
+  color: #1abc9c;
+}
+
+caption{
+  color: #34495e;
+  font-size: 28px;
+}
+
 /*START OF NAV*/
 .navbar{
   background-color: #34495e;
@@ -124,7 +133,7 @@ body {
   white-space: nowrap;
   cursor: pointer;
   visibility: hidden;
-  background: rgba(0, 0, 0, .7);
+  background: #1abc9c;
   background-image: none;
   border-radius: 50%;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .05);
@@ -153,7 +162,7 @@ body {
   transition: all .3s ease;
 }
 .elevator:hover {
-  background: rgba(0, 0, 0, .8);
+  background: #34495e;
 }
 .elevator:hover .fa {
   top: 5px;

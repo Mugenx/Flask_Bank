@@ -22,22 +22,33 @@
 </head>
 <body>
 
-    <!-- child template -->
-    {% block content %}{% endblock %}
+  <!-- child template -->
+  {% block content %}{% endblock %}
 
-    <!-- error message -->
-    {% if error %}
-    <p class="error" align="center"><strong>Error: </strong>{{ error }}</p>
-    {% endif %}
+  <!-- error message -->
+  {% if error %}
+  <p class="error" align="center"><strong>Error: </strong>{{ error }}</p>
+  {% endif %}
 
-    <!-- flash message -->
-    {% for message in get_flashed_messages() %}
-    <p align="center">{{ message }}</p>
-    {% endfor %}
+  <!-- flash message -->
+  {% for message in get_flashed_messages() %}
+  <p align="center">{{ message }}</p>
+  {% endfor %}
 
 
   <!-- toTop -->
-<div class="elevator-wrapper"></div>
+  <div class="elevator-wrapper"></div>
+
+  <!-- footer -->
+  <footer class="footer  navbar-fixed-bottom">
+    <div class="container">
+      <p class="text-muted" align="center" style="margin: 50px 0; color: #003366;">
+        &copy;
+        <script>document.write(new Date().getFullYear())</script>
+        Flask Bank. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
