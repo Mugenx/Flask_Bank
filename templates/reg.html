@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container" align='center'>
+  <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Flak Bank" style="width:300px">
+  <h1>Sign Up</h1>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <form class="form" action="/reg" method="post">
+      <table class="table table-response">
+        <tbody>
+          <tr>
+            <td>UserName</td>
+            <td><input type="text" name="username" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td><input type="email" name="emai" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Firrst Name</td>
+            <td><input type="text" name="firstName" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Last Name</td>
+            <td><input type="text" name="lastName" value=""></td>
+          </tr>
+
+          <tr>
+            <td>phone</td>
+            <td><input type="text" name="phone" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+            <td><input type="text" name="address" value=""></td>
+          </tr>
+
+          <tr>
+            <td>City</td>
+            <td><input type="text" name="city" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Province</td>
+            <td><input type="text" name="province" value=""></td>
+          </tr>
+
+          <tr>
+            <td>Post Code</td>
+            <td><input type="text" name="postcode" value=""></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" style="width:100%" type="button" name="button" value="submit">Submit</button>
+      <a href="/login">or sign in</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
