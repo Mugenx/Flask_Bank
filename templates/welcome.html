@@ -54,9 +54,9 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family: Georgia">Admin <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family: Georgia">{{ username }}<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/profile">My Account</a></li>
+              <li><a href="/profile">My Profile</a></li>
               <li><a href="/logout">Logout</a></li>
             </ul>
           </li>
@@ -69,41 +69,50 @@
 </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
+<div class="container" align='center'>
+  <div class="col-lg-offset-1">
+  <div class="col-lg-10">
+    <table class="table table-response" >
+      <caption>My Accounts</caption>
+      <tbody>
+        <th>Account Type</th>
+        <th>Account Number</th>
+        <th>Balance</th>
+        {% for item in accounts %}
+        <tr>
+          <td >{{ item.type }}</td>
+          <td ><a href="/account/{{ item.accountNum }}">{{ item.accountNum }}</a></td>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
 
-  <h2>My Accounts</h2>
 
-  <table>
-    {% for item in accountType %}
-    <tr><td>view <a href="/account/{{ item }}"><strong>{{ item }}</strong></a> account</td></tr>
+
+    <!-- error message -->
+    {% if error %}
+    <p class="error" align="center"><strong>Error: </strong>{{ error }}</p>
+    {% endif %}
+
+    <!-- flash message -->
+    {% for message in get_flashed_messages() %}
+    <p align="center">{{ message }}</p>
     {% endfor %}
-  </table>
-</div>
-
-<!-- error message -->
-{% if error %}
-<p class="error" align="center"><strong>Error: </strong>{{ error }}</p>
-{% endif %}
-
-<!-- flash message -->
-{% for message in get_flashed_messages() %}
-<p align="center">{{ message }}</p>
-{% endfor %}
 
 
-<!-- toTop -->
-<div class="elevator-wrapper"></div>
+    <!-- toTop -->
+    <div class="elevator-wrapper"></div>
 
-<!-- footer -->
-<footer class="footer  navbar-fixed-bottom">
-  <div class="container">
-    <p class="text-muted" align="center" style="margin: 50px 0; color: #003366;">
-      &copy;
-      <script>document.write(new Date().getFullYear())</script>
-      Flask Bank. All Rights Reserved.
-    </p>
-  </div>
-</footer>
+    <!-- footer -->
+    <footer class="footer  navbar-fixed-bottom">
+      <div class="container">
+        <p class="text-muted" align="center" style="margin: 50px 0; color: #003366;">
+          &copy;
+          <script>document.write(new Date().getFullYear())</script>
+          Flask Bank. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
 
-</body>
-</html>
+  </body>
+  </html>

@@ -11,6 +11,11 @@ caption{
   font-size: 28px;
 }
 
+.back{
+  font-size: 24px;
+  margin: 250px 0 0;
+}
+
 /*START OF NAV*/
 .navbar{
   background-color: #34495e;
