@@ -12,8 +12,9 @@ caption{
 }
 
 .back{
+  color:#e74c3c;
   font-size: 24px;
-  margin: 250px 0 0;
+  margin: 150px 0 0;
 }
 
 /*START OF NAV*/

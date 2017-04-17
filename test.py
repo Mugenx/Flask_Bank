@@ -1,23 +1,31 @@
+"""
+Created on March 24th, 2016
+
+@author: Guobin Wu
+version: 2.0
+professor: Stanley Pieda
+file name: test.py
+
+description: testing database connection
+"""
+
+from unittest.mock import MagicMock
 import unittest
-
-from flask import Flask
-from flask_testing import TestCase
+import sqlite3
 
 
-class TestRenderTemplates(TestCase):
-    render_templates = True
+class MyTest(unittest.TestCase):
+    def test_sqlite3_connect_success(self):
+        sqlite3.connect = MagicMock(return_value='connection succeeded')
 
-    def create_app(self):
-        app = Flask(__name__)
-        app.config['TESTING'] = True
-        return app
+        dbc = DataBaseClass()
+        sqlite3.connect.assert_called_with('db/sample.db')
+        self.assertEqual(dbc.connection, 'connection succeeded')
 
-    def test_assert_template_used(self):
-        try:
-            self.client.get("/template/")
-            self.assert_template_used("welcome.html")
-        except RuntimeError:
-            pass
+
+class DataBaseClass():
+    def __init__(self, connection_string='db/sample.db'):
+        self.connection = sqlite3.connect(connection_string)
 
 
 if __name__ == '__main__':

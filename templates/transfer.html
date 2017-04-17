@@ -1,8 +1,68 @@
 {% extends "baseIn.html" %}
 {% block content %}
 
-<div class="container" align='center'>
-  <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Flak Bank" style="width:300px">
-  <h1>COMING SOON ...</h1>
+<div class="container">
+    <div class="col-lg-12">
+        <div class="col-lg-2">
+            <h1>Transfer Money</h1>
+            <form action="{{ url_for('transfer') }}" method="post">
+                <table class="table">
+                    <tr>
+                        <td><strong>FROM</strong</td>
+                    </tr>
+                    <tr>
+                        <td>{{ username }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Account Number</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control" name="select">
+                                <option selected>Please Select</option>
+                                {% for item in accounts %}
+                                <option value="{{ item.accountNum }}">{{ item.type }} / {{ item.accountNum }} -- $ {{
+                                    item.sub
+                                    }}
+                                </option>
+                                {% endfor%}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>To</strong</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" placeholder="Name" class="form-control" name="username"
+                                   value=""></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Account Number</strong</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" placeholder="Account Number" class="form-control" name="num"
+                                   value=""></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amount</strong</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" placeholder="Amount" class="form-control" name="amount"
+                                   value=""></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value="" placeholder="Description" class="form-control"
+                                   name="description"
+                                   value=""></td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary" style="width:100%">Send</button>
+            </form>
+        </div>
+        <p class="back" align='center'><a href="/welcome">BACK</a></p>
+    </div>
 </div>
 {% endblock %}
